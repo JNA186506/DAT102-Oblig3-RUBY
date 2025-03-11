@@ -26,7 +26,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public boolean contains(T anElement) {
-
+        for (int i = 0; i < antall; i++) {
+            if (set[i].equals(anElement)) {
+                return true;
+            }
+        }
         return false;
     }
 
