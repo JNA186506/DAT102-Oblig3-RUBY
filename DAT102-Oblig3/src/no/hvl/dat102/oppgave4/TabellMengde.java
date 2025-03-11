@@ -1,5 +1,7 @@
 package no.hvl.dat102.oppgave4;
 
+import java.util.Arrays;
+
 public class TabellMengde<T> implements MengdeADT<T> {
 
 
@@ -24,7 +26,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public boolean contains(T anElement) {
-
 
         return false;
     }
@@ -62,6 +63,12 @@ public class TabellMengde<T> implements MengdeADT<T> {
     @Override
     public void addElement(T newElement) {
 
+        if (antall == INITIAL_CAPACITY) {
+            set = Arrays.copyOf(set, set.length*2);
+        }
+
+        set[antall] = newElement;
+        antall++;
     }
 
     @Override
