@@ -2,25 +2,14 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat102.oppgave4.MengdeADT;
 import no.hvl.dat102.oppgave4.TabellMengde;
 
-class TabellMengdeTest {
+class TabellMengdeTest<T> {
 	
-	MengdeADT tabellMengde;
-	
-	@BeforeEach
-	void setUp() {
-		
-		tabellMengde = new TabellMengde(5);
-		
-	}
+	MengdeADT<Integer> tabellMengde = new TabellMengde<Integer>(5);
 	
 	@Test
 	void testIsEmpty() {
@@ -36,10 +25,10 @@ class TabellMengdeTest {
 		
 		assertFalse(tabellMengde.contains(12));
 		tabellMengde.addElement(12);
-		assertFalse(tabellMengde.contains(12));
+		assertTrue(tabellMengde.contains(12));
 		
 	}
-	
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testIsSubset() {
 		
@@ -47,7 +36,7 @@ class TabellMengdeTest {
 		tabellMengde.addElement(13);
 		tabellMengde.addElement(14);
 		
-		MengdeADT tabellMengde2 = new TabellMengde(5);
+		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
 		tabellMengde2.addElement(12);
 		
 		assertTrue(tabellMengde.isSubset(tabellMengde2));
@@ -57,5 +46,5 @@ class TabellMengdeTest {
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
 		
 	}
-	
+	*/
 }

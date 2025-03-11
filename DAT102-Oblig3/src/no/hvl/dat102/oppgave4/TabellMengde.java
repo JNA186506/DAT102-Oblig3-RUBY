@@ -7,15 +7,16 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     private static final int INITIAL_CAPACITY = 10;
 
-    private T[] set;
+    T[] set;
     private int antall;
 
     public TabellMengde() {
         this(INITIAL_CAPACITY);
     }
 
-    public TabellMengde(int capacity) {
-        T[] set = (T[]) new Object[capacity];
+    @SuppressWarnings("unchecked")
+	public TabellMengde(int capacity) {
+        set = (T[]) new Object[capacity];
         antall = 0;
     }
 
