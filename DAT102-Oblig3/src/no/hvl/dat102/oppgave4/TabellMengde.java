@@ -7,7 +7,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     private static final int INITIAL_CAPACITY = 10;
 
-    T[] set;
+    private T[] set;
     private int antall;
 
     public TabellMengde() {
