@@ -40,21 +40,24 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.contains(20));
 		
 	}
-	/* Metode ikkje implementert i TabellMengde enda
+	
 	@Test
 	void testIsSubset() {
 		
 		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
 		tabellMengde2.addElement(12);
+		tabellMengde2.addElement(13);
+		tabellMengde2.addElement(14);
+		tabellMengde2.addElement(15);
 		
 		assertTrue(tabellMengde.isSubset(tabellMengde2));
 		
-		tabellMengde2.addElement(4);
+		tabellMengde.addElement(4);
 		
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
 		
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testIsEqual() {
 		
@@ -69,7 +72,7 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.isEqual(tabellMengde2));
 		
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testIsDisjunct() {
 		
@@ -85,7 +88,7 @@ class TabellMengdeTest<T> {
 		assertFalse(tabellMengde.isDisjunct(tabellMengde2));
 		
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testSetMinus() {
 		
@@ -100,7 +103,7 @@ class TabellMengdeTest<T> {
 		assertEquals(tabellMengde.setMinus(tabellMengde2), tabellMengde3);
 		
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testUnion() {
 		
@@ -119,7 +122,18 @@ class TabellMengdeTest<T> {
 		assertEquals(tabellMengde.union(tabellMengde2), tabellMengde3);
 		
 	}
-	*//* Difference, AddElement, RemoveElement
+	/* Difference, AddElement*/
+	@Test
+	void testRemoveElement() {
+		
+		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
+		tabellMengde2.addElement(13);
+		tabellMengde2.addElement(14);
+		
+		assertEquals(12, tabellMengde.removeElement(12));
+		
+		//assertTrue(tabellMengde.isEqual(tabellMengde2));
+		
+	}
 	
-	*/
 }

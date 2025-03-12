@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 
-
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
@@ -37,7 +36,19 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public boolean isSubset(MengdeADT<T> set) {
-        return false;
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(!set.contains(this.set[i])) {
+    			
+    			return false;
+    			
+    		}
+    		
+    	}
+    	
+        return true;
+        
     }
 
     @Override
@@ -78,6 +89,26 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public T removeElement(T anElement) {
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(set[i].equals(anElement)) {
+    			
+    			for(int j = i; j < antall - 1; j++) {
+    				
+    				set[j] = set[j + 1];
+    				
+    			}
+    			
+    			set[antall - 1] = null;
+    			antall--;
+    			
+    			return anElement;
+    			
+    		}
+    		
+    	}
+    	
         return null;
     }
 }
