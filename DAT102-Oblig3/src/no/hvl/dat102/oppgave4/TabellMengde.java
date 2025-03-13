@@ -80,7 +80,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
     
     @Override
-    public boolean isDisjunct(MengdeADT<T> otherSet) {
+    public boolean isDisjunct(MengdeADT<T> otherSet) { //O(n)
     	
     	for(int i = 0; i < antall; i++) {
     		
@@ -93,7 +93,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
     // Ikkje implementert
     @Override
-    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
+    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) { //O(n^2)
         MengdeADT<T> union = new TabellMengde<T>();
 
         for (int i = 0; i < antall; i++) {
@@ -111,8 +111,16 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
     // Ikkje implementert
     @Override
-    public MengdeADT<T> setMinus(MengdeADT<T> otherSet) {
-        return null;
+    public MengdeADT<T> setIntersection(MengdeADT<T> otherSet) {
+        MengdeADT<T> minus = new TabellMengde<>();
+
+        for (int i = 0; i < antall; i++) {
+            if (otherSet.contains(set[i])) {
+                minus.addElement(set[i]);
+            }
+        }
+
+        return minus;
     }
     // Ikkje implementert
     @Override

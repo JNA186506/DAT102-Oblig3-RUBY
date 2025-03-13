@@ -18,7 +18,7 @@ public interface MengdeADT<T> {
 	
 	MengdeADT<T> findDifference(MengdeADT<T> set);
 
-	MengdeADT<T> setMinus(MengdeADT<T> set);
+	MengdeADT<T> setIntersection(MengdeADT<T> set);
 
 	void addElement(T newElement);
 	

@@ -88,7 +88,7 @@ class TabellMengdeTest<T> {
 		assertFalse(tabellMengde.isDisjunct(tabellMengde2));
 		
 	}
-	/* Metode ikkje implementert i TabellMengde enda
+
 	@Test
 	void testSetMinus() {
 		
@@ -100,10 +100,10 @@ class TabellMengdeTest<T> {
 		MengdeADT<Integer> tabellMengde3 = new TabellMengde<Integer>();
 		tabellMengde3.addElement(12);
 		
-		assertEquals(tabellMengde.setMinus(tabellMengde2), tabellMengde3);
+		assertTrue(tabellMengde.setIntersection(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
-	*/
+
 	@Test
 	void testUnion() {
 		
