@@ -108,20 +108,28 @@ public class TabellMengde<T> implements MengdeADT<T> {
     
     @Override
     public MengdeADT<T> setIntersection(MengdeADT<T> otherSet) {
-        MengdeADT<T> minus = new TabellMengde<>();
+        MengdeADT<T> intersection = new TabellMengde<>();
 
         for (int i = 0; i < antall; i++) {
             if (otherSet.contains(set[i])) {
+                intersection.addElement(set[i]);
+            }
+        }
+
+        return intersection;
+    }
+
+    @Override
+    public MengdeADT<T> findDifference(MengdeADT<T> otherSet) {
+        MengdeADT<T> minus = new TabellMengde<>();
+
+        for (int i = 0; i < antall; i++) {
+            if (!otherSet.contains(set[i])) {
                 minus.addElement(set[i]);
             }
         }
 
         return minus;
-    }
-    // Ikkje implementert
-    @Override
-    public MengdeADT<T> findDifference(MengdeADT<T> otherSet) {
-        return null;
     }
 
     @Override

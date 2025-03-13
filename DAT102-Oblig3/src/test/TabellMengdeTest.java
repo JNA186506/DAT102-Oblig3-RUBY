@@ -90,7 +90,7 @@ class TabellMengdeTest<T> {
 	}
 
 	@Test
-	void testSetMinus() {
+	void testSetIntersection() {
 		
 		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(1);
