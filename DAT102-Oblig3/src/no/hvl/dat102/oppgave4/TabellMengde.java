@@ -36,6 +36,10 @@ public class TabellMengde<T> implements MengdeADT<T> {
         antall = 0;
     }
 
+    public int getAntall() {
+        return antall;
+    }
+
     @Override
     public boolean isEmpty() {
         return antall == 0;
@@ -52,7 +56,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public boolean isSubset(MengdeADT<T> set) {
+    public boolean isSubset(MengdeADT<T> set) { //O(n)
     	
     	for(int i = 0; i < antall; i++) {
     		if(!set.contains(this.set[i])) {
@@ -66,16 +70,21 @@ public class TabellMengde<T> implements MengdeADT<T> {
     // Ikkje implementert
     @Override
     public boolean isEqual(MengdeADT<T> otherSet) {
-        T[] otherSetArray = otherSet.toArray();
-        return Arrays.equals(set, otherSetArray);
+        for(int i = 0; i < antall; i++) {
+
+            if(!otherSet.contains(this.set[i])) return false;
+
+        }
+
+        return true;
     }
     
     @Override
-    public boolean isDisjunct(MengdeADT<T> set) {
+    public boolean isDisjunct(MengdeADT<T> otherSet) {
     	
     	for(int i = 0; i < antall; i++) {
     		
-    		if(set.contains(this.set[i])) return false;
+    		if(otherSet.contains(set[i])) return false;
     		
     	}
     	
@@ -85,15 +94,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
     // Ikkje implementert
     @Override
     public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
-        T[] kopiOtherSet = otherSet.toArray();
         MengdeADT<T> union = new TabellMengde<T>();
 
-        for (int i = 0; i < set.length; i++) {
+        for (int i = 0; i < antall; i++) {
             union.addElement(set[i]);
         }
 
-        for (int i = 0; i < kopiOtherSet.length; i++) {
-            if (!otherSet.contains(kopiOtherSet[i])) {
+        T[] kopiOtherSet = otherSet.toArray();
+        for (int i = 0; i < otherSet.getAntall(); i++) {
+            if(kopiOtherSet[i] != null) {
                 union.addElement(kopiOtherSet[i]);
             }
         }
@@ -113,11 +122,12 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public void addElement(T newElement) {
-        if (this.contains(newElement)) {
+
+        if (this.contains(newElement) || newElement == null) {
             return;
         }
 
-        if (antall == INITIAL_CAPACITY) {
+        if (antall == set.length) {
             set = Arrays.copyOf(set, set.length*2);
         }
 
@@ -152,11 +162,19 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public T[] toArray() {
-        T[] kopi = (T[]) new Object[this.INITIAL_CAPACITY];
+        T[] kopi = (T[]) new Object[INITIAL_CAPACITY];
 
         for (int i = 0; i < this.antall; i++) {
             kopi[i] = this.set[i];
         }
         return kopi;
+    }
+
+    @Override
+    public String toString() {
+        return "TabellMengde{" +
+                "set=" + Arrays.toString(set) +
+                ", antall=" + antall +
+                '}';
     }
 }

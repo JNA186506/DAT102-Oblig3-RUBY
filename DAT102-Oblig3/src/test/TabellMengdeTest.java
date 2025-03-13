@@ -116,10 +116,10 @@ class TabellMengdeTest<T> {
 		tabellMengde3.addElement(12);
 		tabellMengde3.addElement(13);
 		tabellMengde3.addElement(14);
-		tabellMengde3.addElement(2);
 		tabellMengde3.addElement(1);
-		
-		assertEquals(tabellMengde.findUnion(tabellMengde2), tabellMengde3);
+		tabellMengde3.addElement(2);
+
+		assertTrue(tabellMengde.findUnion(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
 	/* Difference */
