@@ -10,7 +10,7 @@ public interface MengdeADT<T> {
 	
 	boolean isEqual(MengdeADT<T> set);
 
-	MengdeADT<T> isDisjunct(MengdeADT<T> set);
+	boolean isDisjunct(MengdeADT<T> set);
 	
 	MengdeADT<T> findUnion(MengdeADT<T> set);
 	

@@ -4,8 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
-
-
+	
+	/*
+	 * Implementert:
+	 * isEmpty
+	 * contains
+	 * isSubset
+	 * isDisjunct
+	 * addElement
+	 * removeElement
+	 * 
+	 * Ikkje implementert:
+	 * isEqual
+	 * findUnion
+	 * setMinus
+	 * findDifference
+	 */
+	
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
@@ -37,42 +52,51 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public boolean isSubset(MengdeADT<T> otherSet) { //Brute force O(n^2)
-        T[] arr = otherSet.toArray();
-        for (T s : arr) {
-            System.out.println(s);
-        }
-        for (int i = 0; i < antall; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[j].equals(set[i])) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean isSubset(MengdeADT<T> set) {
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(!set.contains(this.set[i])) {
+    			
+    			return false;
+    			
+    		}
+    		
+    	}
+    	
+        return true;
+        
     }
-
+    // Ikkje implementert
     @Override
     public boolean isEqual(MengdeADT<T> otherSet) {
         T[] otherSetArray = otherSet.toArray();
         return Arrays.equals(set, otherSetArray);
     }
-
+    
     @Override
-    public MengdeADT<T> isDisjunct(MengdeADT<T> otherSet) {
-        return null;
-    }
+    public boolean isDisjunct(MengdeADT<T> set) {
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(set.contains(this.set[i])) return false;
+    		
+    	}
+    	
+    	return true;
 
+    }
+    // Ikkje implementert
     @Override
     public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
         return null;
     }
-
+    // Ikkje implementert
     @Override
     public MengdeADT<T> setMinus(MengdeADT<T> otherSet) {
         return null;
     }
-
+    // Ikkje implementert
     @Override
     public MengdeADT<T> findDifference(MengdeADT<T> otherSet) {
         return null;
@@ -90,6 +114,26 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public T removeElement(T anElement) {
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(set[i].equals(anElement)) {
+    			
+    			for(int j = i; j < antall - 1; j++) {
+    				
+    				set[j] = set[j + 1];
+    				
+    			}
+    			
+    			set[antall - 1] = null;
+    			antall--;
+    			
+    			return anElement;
+    			
+    		}
+    		
+    	}
+    	
         return null;
     }
 
