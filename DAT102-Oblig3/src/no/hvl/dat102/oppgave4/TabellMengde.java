@@ -1,6 +1,5 @@
 package no.hvl.dat102.oppgave4;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
@@ -13,11 +12,11 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	 * isDisjunct
 	 * addElement
 	 * removeElement
-	 * 
-	 * Ikkje implementert:
 	 * isEqual
 	 * findUnion
-	 * setMinus
+	 * intersection
+	 * 
+	 * Ikkje implementert:
 	 * findDifference
 	 */
 	
@@ -91,25 +90,22 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	return true;
 
     }
-    // Ikkje implementert
+    
     @Override
-    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) { //O(n^2)
+    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
         MengdeADT<T> union = new TabellMengde<T>();
 
         for (int i = 0; i < antall; i++) {
             union.addElement(set[i]);
         }
 
-        T[] kopiOtherSet = otherSet.toArray();
-        for (int i = 0; i < otherSet.getAntall(); i++) {
-            if(kopiOtherSet[i] != null) {
-                union.addElement(kopiOtherSet[i]);
-            }
+        for (T t : otherSet.toArray()) {
+        	union.addElement(t);
         }
 
         return union;
     }
-    // Ikkje implementert
+    
     @Override
     public MengdeADT<T> setIntersection(MengdeADT<T> otherSet) {
         MengdeADT<T> minus = new TabellMengde<>();
