@@ -57,8 +57,16 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public MengdeADT<T> isDisjunct(MengdeADT<T> set) {
-        return null;
+    public boolean isDisjunct(MengdeADT<T> set) {
+    	
+    	for(int i = 0; i < antall; i++) {
+    		
+    		if(set.contains(this.set[i])) return false;
+    		
+    	}
+    	
+    	return true;
+    	
     }
 
     @Override
