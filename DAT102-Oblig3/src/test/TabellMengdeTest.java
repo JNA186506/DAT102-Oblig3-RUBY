@@ -39,7 +39,7 @@ class TabellMengdeTest<T> {
 		tabellMengde.addElement(20);
 		assertTrue(tabellMengde.contains(20));
 		
-	}
+  }
 	
 	@Test
 	void testIsSubset() {
@@ -53,11 +53,11 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.isSubset(tabellMengde2));
 		
 		tabellMengde.addElement(4);
-		
+	
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
-		
+
 	}
-	/* Metode ikkje implementert i TabellMengde enda
+
 	@Test
 	void testIsEqual() {
 		
@@ -72,7 +72,7 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.isEqual(tabellMengde2));
 		
 	}
-	*/
+
 	@Test
 	void testIsDisjunct() {
 		

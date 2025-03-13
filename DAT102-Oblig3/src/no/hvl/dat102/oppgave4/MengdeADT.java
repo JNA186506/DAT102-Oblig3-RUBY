@@ -21,5 +21,7 @@ public interface MengdeADT<T> {
 	void addElement(T newElement);
 	
 	T removeElement(T anElement);
+
+	T[] toArray();
 	
 }

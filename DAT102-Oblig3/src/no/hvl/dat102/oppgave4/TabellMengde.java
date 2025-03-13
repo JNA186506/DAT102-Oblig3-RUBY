@@ -1,5 +1,6 @@
 package no.hvl.dat102.oppgave4;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
@@ -41,7 +42,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public boolean contains(T anElement) {
+    public boolean contains(T anElement) { //O(n)
         for (int i = 0; i < antall; i++) {
             if (set[i].equals(anElement)) {
                 return true;
@@ -68,8 +69,9 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
     // Ikkje implementert
     @Override
-    public boolean isEqual(MengdeADT<T> set) {
-        return false;
+    public boolean isEqual(MengdeADT<T> otherSet) {
+        T[] otherSetArray = otherSet.toArray();
+        return Arrays.equals(set, otherSetArray);
     }
     
     @Override
@@ -82,27 +84,26 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	}
     	
     	return true;
-    	
+
     }
     // Ikkje implementert
     @Override
-    public MengdeADT<T> findUnion(MengdeADT<T> set) {
+    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
         return null;
     }
     // Ikkje implementert
     @Override
-    public MengdeADT<T> setMinus(MengdeADT<T> set) {
+    public MengdeADT<T> setMinus(MengdeADT<T> otherSet) {
         return null;
     }
     // Ikkje implementert
     @Override
-    public MengdeADT<T> findDifference(MengdeADT<T> set) {
+    public MengdeADT<T> findDifference(MengdeADT<T> otherSet) {
         return null;
     }
 
     @Override
     public void addElement(T newElement) {
-
         if (antall == INITIAL_CAPACITY) {
             set = Arrays.copyOf(set, set.length*2);
         }
@@ -134,5 +135,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	}
     	
         return null;
+    }
+
+    @Override
+    public T[] toArray() {
+        T[] kopi = (T[]) new Object[this.INITIAL_CAPACITY];
+
+        for (int i = 0; i < this.antall; i++) {
+            kopi[i] = this.set[i];
+        }
+        return kopi;
     }
 }
