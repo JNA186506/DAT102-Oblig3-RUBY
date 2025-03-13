@@ -4,22 +4,6 @@ import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	
-	/*
-	 * Implementert:
-	 * isEmpty
-	 * contains
-	 * isSubset
-	 * isDisjunct
-	 * addElement
-	 * removeElement
-	 * isEqual
-	 * findUnion
-	 * intersection
-	 * 
-	 * Ikkje implementert:
-	 * findDifference
-	 */
-	
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
@@ -174,7 +158,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public T[] toArray() {
-        T[] kopi = (T[]) new Object[INITIAL_CAPACITY];
+        @SuppressWarnings("unchecked")
+		T[] kopi = (T[]) new Object[INITIAL_CAPACITY];
 
         for (int i = 0; i < this.antall; i++) {
             kopi[i] = this.set[i];
