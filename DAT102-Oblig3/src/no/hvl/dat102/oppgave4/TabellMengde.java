@@ -3,7 +3,23 @@ package no.hvl.dat102.oppgave4;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
-
+	
+	/*
+	 * Implementert:
+	 * isEmpty
+	 * contains
+	 * isSubset
+	 * isDisjunct
+	 * addElement
+	 * removeElement
+	 * 
+	 * Ikkje implementert:
+	 * isEqual
+	 * findUnion
+	 * setMinus
+	 * findDifference
+	 */
+	
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
@@ -50,12 +66,12 @@ public class TabellMengde<T> implements MengdeADT<T> {
         return true;
         
     }
-
+    // Ikkje implementert
     @Override
     public boolean isEqual(MengdeADT<T> set) {
         return false;
     }
-
+    
     @Override
     public boolean isDisjunct(MengdeADT<T> set) {
     	
@@ -68,17 +84,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	return true;
     	
     }
-
+    // Ikkje implementert
     @Override
     public MengdeADT<T> findUnion(MengdeADT<T> set) {
         return null;
     }
-
+    // Ikkje implementert
     @Override
     public MengdeADT<T> setMinus(MengdeADT<T> set) {
         return null;
     }
-
+    // Ikkje implementert
     @Override
     public MengdeADT<T> findDifference(MengdeADT<T> set) {
         return null;
