@@ -97,13 +97,13 @@ class TabellMengdeTest<T> {
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(12);
 		
-		MengdeADT<Integer> tabellMengde3 = new TabellMengde<Integer>(5);
+		MengdeADT<Integer> tabellMengde3 = new TabellMengde<Integer>();
 		tabellMengde3.addElement(12);
 		
 		assertEquals(tabellMengde.setMinus(tabellMengde2), tabellMengde3);
 		
 	}
-	/* Metode ikkje implementert i TabellMengde enda
+	*/
 	@Test
 	void testUnion() {
 		
@@ -119,7 +119,7 @@ class TabellMengdeTest<T> {
 		tabellMengde3.addElement(2);
 		tabellMengde3.addElement(1);
 		
-		assertEquals(tabellMengde.union(tabellMengde2), tabellMengde3);
+		assertEquals(tabellMengde.findUnion(tabellMengde2), tabellMengde3);
 		
 	}
 	/* Difference */

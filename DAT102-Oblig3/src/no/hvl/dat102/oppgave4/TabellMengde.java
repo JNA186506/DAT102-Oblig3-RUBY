@@ -55,13 +55,9 @@ public class TabellMengde<T> implements MengdeADT<T> {
     public boolean isSubset(MengdeADT<T> set) {
     	
     	for(int i = 0; i < antall; i++) {
-    		
     		if(!set.contains(this.set[i])) {
-    			
     			return false;
-    			
     		}
-    		
     	}
     	
         return true;
@@ -89,7 +85,20 @@ public class TabellMengde<T> implements MengdeADT<T> {
     // Ikkje implementert
     @Override
     public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
-        return null;
+        T[] kopiOtherSet = otherSet.toArray();
+        MengdeADT<T> union = new TabellMengde<T>();
+
+        for (int i = 0; i < set.length; i++) {
+            union.addElement(set[i]);
+        }
+
+        for (int i = 0; i < kopiOtherSet.length; i++) {
+            if (!otherSet.contains(kopiOtherSet[i])) {
+                union.addElement(kopiOtherSet[i]);
+            }
+        }
+
+        return union;
     }
     // Ikkje implementert
     @Override
@@ -104,6 +113,10 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public void addElement(T newElement) {
+        if (this.contains(newElement)) {
+            return;
+        }
+
         if (antall == INITIAL_CAPACITY) {
             set = Arrays.copyOf(set, set.length*2);
         }
