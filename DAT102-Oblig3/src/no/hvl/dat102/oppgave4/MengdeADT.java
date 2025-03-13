@@ -2,6 +2,8 @@ package no.hvl.dat102.oppgave4;
 
 public interface MengdeADT<T> {
 
+	int getAntall();
+
 	boolean isEmpty();
 	
 	boolean contains(T anElement);
@@ -23,5 +25,7 @@ public interface MengdeADT<T> {
 	T removeElement(T anElement);
 
 	T[] toArray();
+
+	String toString();
 	
 }
