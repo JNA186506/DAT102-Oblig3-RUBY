@@ -10,7 +10,7 @@ import no.hvl.dat102.oppgave4.TabellMengde;
 
 class TabellMengdeTest<T> {
 	
-	MengdeADT<Integer> tabellMengde = new TabellMengde<Integer>(5);
+	MengdeADT<Integer> tabellMengde = new TabellMengde<Integer>();
 	
 	@BeforeEach
 	void setUp() {
@@ -24,7 +24,7 @@ class TabellMengdeTest<T> {
 	@Test
 	void testIsEmpty() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
+		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		
 		assertTrue(tabellMengde2.isEmpty());
 		tabellMengde2.addElement(12);
@@ -40,25 +40,26 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.contains(20));
 		
 	}
-	/* Metode ikkje implementert i TabellMengde enda
+
 	@Test
 	void testIsSubset() {
-		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
+
+		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(12);
-		
+
 		assertTrue(tabellMengde.isSubset(tabellMengde2));
-		
+
 		tabellMengde2.addElement(4);
-		
+
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
-		
+
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+
+
 	@Test
 	void testIsEqual() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>(5);
+		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(12);
 		
 		assertFalse(tabellMengde.isEqual(tabellMengde2));
@@ -69,7 +70,8 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.isEqual(tabellMengde2));
 		
 	}
-	*//* Metode ikkje implementert i TabellMengde enda
+
+	/* Metode ikkje implementert i TabellMengde enda
 	@Test
 	void testIsDisjunct() {
 		

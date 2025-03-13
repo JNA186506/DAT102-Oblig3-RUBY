@@ -1,5 +1,6 @@
 package no.hvl.dat102.oppgave4;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
@@ -26,7 +27,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public boolean contains(T anElement) {
+    public boolean contains(T anElement) { //O(n)
         for (int i = 0; i < antall; i++) {
             if (set[i].equals(anElement)) {
                 return true;
@@ -36,38 +37,49 @@ public class TabellMengde<T> implements MengdeADT<T> {
     }
 
     @Override
-    public boolean isSubset(MengdeADT<T> set) {
+    public boolean isSubset(MengdeADT<T> otherSet) { //Brute force O(n^2)
+        T[] arr = otherSet.toArray();
+        for (T s : arr) {
+            System.out.println(s);
+        }
+        for (int i = 0; i < antall; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j].equals(set[i])) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
     @Override
-    public boolean isEqual(MengdeADT<T> set) {
-        return false;
+    public boolean isEqual(MengdeADT<T> otherSet) {
+        T[] otherSetArray = otherSet.toArray();
+        return Arrays.equals(set, otherSetArray);
     }
 
     @Override
-    public MengdeADT<T> isDisjunct(MengdeADT<T> set) {
+    public MengdeADT<T> isDisjunct(MengdeADT<T> otherSet) {
         return null;
     }
 
     @Override
-    public MengdeADT<T> findUnion(MengdeADT<T> set) {
+    public MengdeADT<T> findUnion(MengdeADT<T> otherSet) {
         return null;
     }
 
     @Override
-    public MengdeADT<T> setMinus(MengdeADT<T> set) {
+    public MengdeADT<T> setMinus(MengdeADT<T> otherSet) {
         return null;
     }
 
     @Override
-    public MengdeADT<T> findDifference(MengdeADT<T> set) {
+    public MengdeADT<T> findDifference(MengdeADT<T> otherSet) {
         return null;
     }
 
     @Override
     public void addElement(T newElement) {
-
         if (antall == INITIAL_CAPACITY) {
             set = Arrays.copyOf(set, set.length*2);
         }
@@ -79,5 +91,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
     @Override
     public T removeElement(T anElement) {
         return null;
+    }
+
+    @Override
+    public T[] toArray() {
+        T[] kopi = (T[]) new Object[this.INITIAL_CAPACITY];
+
+        for (int i = 0; i < this.antall; i++) {
+            kopi[i] = this.set[i];
+        }
+        return kopi;
     }
 }
