@@ -50,16 +50,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
         return true;
         
     }
-    // Ikkje implementert
+    
     @Override
     public boolean isEqual(MengdeADT<T> otherSet) {
-        for(int i = 0; i < antall; i++) {
+    	for(int i = 0; i < antall; i++) {
 
-            if(!otherSet.contains(this.set[i])) return false;
+            if(!otherSet.contains(set[i])) return false;
 
         }
-
-        return true;
+    	
+    	return true;
+    	
     }
     
     @Override
@@ -72,7 +73,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	}
     	
     	return true;
-
+    	
     }
     
     @Override
