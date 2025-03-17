@@ -116,6 +116,7 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.findUnion(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
+	
 	@Test
 	void testFindDifference() {
 		
@@ -123,12 +124,15 @@ class TabellMengdeTest<T> {
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(12);
 		
+		tabellMengde3.addElement(1);
+		tabellMengde3.addElement(2);
 		tabellMengde3.addElement(13);
 		tabellMengde3.addElement(14);
 		
 		assertTrue(tabellMengde.findDifference(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
+	
 	@Test
 	void testAddElement() {
 		
@@ -137,6 +141,10 @@ class TabellMengdeTest<T> {
 			tabellMengde2.addElement(i);
 			
 		}
+		
+		tabellMengde2.addElement(1);
+		
+		assertEquals(tabellMengde2.getAntall(), 20);
 		
 		for(int i = 0; i < 20; i++) {
 			

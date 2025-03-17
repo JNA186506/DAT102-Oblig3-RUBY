@@ -113,8 +113,23 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	
 	@Override
 	public MengdeADT<T> findDifference(MengdeADT<T> set) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		MengdeADT<T> temp = new JavaSetToMengde<T>();
+		T[] tList = set.toArray();
+		
+		for(T t : tList) {
+			
+			if(!this.set.contains(t)) temp.addElement(t);
+			
+		}
+		
+		for(T t : this.set) {
+			
+			if(!set.contains(t)) temp.addElement(t);
+			
+		}
+		
+		return temp;
 	}
 	
 	@Override
@@ -135,7 +150,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	public void addElement(T newElement) {
 		
 		set.add(newElement);
-		antall++;
+		antall = set.size();
 		
 	}
 	
@@ -145,6 +160,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 		if(set.contains(anElement)) {
 			
 			set.remove(anElement);
+			antall = set.size();
 			
 			return anElement;
 			
