@@ -3,26 +3,38 @@ package no.hvl.dat102.mengde;
 public class LenketMengde<T> implements MengdeADT<T> {
 
     private int antall;
-    private Node node;
+    private Node<T> node;
 
 
     @Override
     public int getAntall() {
-        return 0;
+        return antall;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return antall == 0;
     }
 
     @Override
     public boolean contains(T anElement) {
+        Node<T> n = node;
+        while (n != null) {
+            if (n.equals(anElement)) {
+                return true;
+            }
+            n = n.next;
+        }
         return false;
     }
 
     @Override
     public boolean isSubset(MengdeADT<T> set) {
+        Node<T> n = node;
+        while (n != null) {
+            if (set.contains(n.data)) { return true; }
+            n = n.next;
+        }
         return false;
     }
 
@@ -53,11 +65,30 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
     @Override
     public void addElement(T newElement) {
+        Node<T> n = new Node<>(newElement);
+
+        if (this.contains(newElement) || newElement == null) {
+            return;
+        }
+
+        n.next = node;
+        node = n;
+        antall++;
 
     }
 
     @Override
     public T removeElement(T anElement) {
+        Node<T> n = node;
+
+        while (n != null) {
+            if (n.equals(anElement)) {
+
+            }
+
+            n = n.next;
+        }
+
         return null;
     }
 
