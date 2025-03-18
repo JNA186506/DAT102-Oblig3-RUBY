@@ -1,4 +1,6 @@
-package no.hvl.dat102.oppgave4;
+package no.hvl.dat102.mengde;
+
+import no.hvl.dat102.mengde.MengdeADT;
 
 import java.util.HashSet;
 import java.util.Set;
