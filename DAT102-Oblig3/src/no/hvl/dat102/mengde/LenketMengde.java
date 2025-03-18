@@ -20,7 +20,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
     public boolean contains(T anElement) {
         Node<T> n = node;
         while (n != null) {
-            if (n.equals(anElement)) {
+            if (n.data.equals(anElement)) {
                 return true;
             }
             n = n.next;
@@ -32,36 +32,75 @@ public class LenketMengde<T> implements MengdeADT<T> {
     public boolean isSubset(MengdeADT<T> set) {
         Node<T> n = node;
         while (n != null) {
-            if (set.contains(n.data)) { return true; }
+            if (!set.contains(n.data)) { return false; }
             n = n.next;
         }
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEqual(MengdeADT<T> set) {
-        return false;
+        return isSubset(set) && set.isSubset(this);
     }
 
     @Override
     public boolean isDisjunct(MengdeADT<T> set) {
-        return false;
+        Node<T> n = node;
+
+        while (n != null) {
+            if (set.contains(n.data)) {
+                return false;
+            }
+            n = n.next;
+        }
+        return true;
     }
 
     @Override
     public MengdeADT<T> findUnion(MengdeADT<T> set) {
-        return null;
-    }
+        MengdeADT<T> unionLList = new LenketMengde<>();
+        Node<T> n = node;
 
-    @Override
-    public MengdeADT<T> findDifference(MengdeADT<T> set) {
-        return null;
+        while (n != null) {
+            unionLList.addElement(n.data);
+            n = n.next;
+        }
+
+        for (T element : set.toArray()) {
+            if (!unionLList.contains(element)) {
+                unionLList.addElement(element);
+            }
+        }
+
+        return unionLList;
     }
 
     @Override
     public MengdeADT<T> setIntersection(MengdeADT<T> set) {
-        return null;
+        MengdeADT<T> nyMengde = new LenketMengde<>();
+        Node<T> n = node;
+
+        while (n != null) {
+            if (set.contains(n.data)) nyMengde.addElement(n.data);
+            n = n.next;
+        }
+
+        return nyMengde;
     }
+
+    @Override
+    public MengdeADT<T> findDifference(MengdeADT<T> set) {
+        MengdeADT<T> nyMengde = new LenketMengde<>();
+        Node<T> n = node;
+
+        while (n != null) {
+            if (!set.contains(n.data)) nyMengde.addElement(n.data);
+            n = n.next;
+        }
+
+        return nyMengde;
+    }
+
 
     @Override
     public void addElement(T newElement) {
@@ -82,8 +121,9 @@ public class LenketMengde<T> implements MengdeADT<T> {
         Node<T> n = node;
 
         while (n != null) {
-            if (n.equals(anElement)) {
+            if (n.data.equals(anElement)) {
                 node = n.next;
+                antall--;
                 return anElement;
             }
             n = n.next;
@@ -93,6 +133,16 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
     @Override
     public T[] toArray() {
-        return null;
+        Node<T> n = node;
+        T[] arr = (T[]) new Object[antall];
+
+        int i = 0;
+        while (n != null) {
+            arr[i] = n.data;
+            i++;
+            n = n.next;
+        }
+
+        return arr;
     }
 }
