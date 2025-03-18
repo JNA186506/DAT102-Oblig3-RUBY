@@ -5,12 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import no.hvl.dat102.mengde.MengdeADT;
-import no.hvl.dat102.mengde.TabellMengde;
+import no.hvl.dat102.oppgave4.JavaSetToMengde;
+import no.hvl.dat102.oppgave4.MengdeADT;
+import no.hvl.dat102.oppgave4.TabellMengde;
 
 class TabellMengdeTest<T> {
 	
-	MengdeADT<Integer> tabellMengde = new TabellMengde<Integer>();
+	MengdeADT<Integer> tabellMengde = new JavaSetToMengde<Integer>();
+	MengdeADT<Integer> tabellMengde2 = new JavaSetToMengde<Integer>();
+	MengdeADT<Integer> tabellMengde3 = new JavaSetToMengde<Integer>();
 	
 	@BeforeEach
 	void setUp() {
@@ -23,8 +26,6 @@ class TabellMengdeTest<T> {
 	
 	@Test
 	void testIsEmpty() {
-		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		
 		assertTrue(tabellMengde2.isEmpty());
 		tabellMengde2.addElement(12);
@@ -44,7 +45,6 @@ class TabellMengdeTest<T> {
 	@Test
 	void testIsSubset() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(12);
 		tabellMengde2.addElement(13);
 		tabellMengde2.addElement(14);
@@ -55,13 +55,12 @@ class TabellMengdeTest<T> {
 		tabellMengde.addElement(4);
 	
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
-
+	
 	}
-
+	
 	@Test
 	void testIsEqual() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(12);
 		
 		assertFalse(tabellMengde.isEqual(tabellMengde2));
@@ -71,12 +70,15 @@ class TabellMengdeTest<T> {
 		
 		assertTrue(tabellMengde.isEqual(tabellMengde2));
 		
+		tabellMengde2.addElement(15);
+		
+		assertFalse(tabellMengde.isEqual(tabellMengde2));
+		
 	}
-
+	
 	@Test
 	void testIsDisjunct() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(1);
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(3);
@@ -88,31 +90,27 @@ class TabellMengdeTest<T> {
 		assertFalse(tabellMengde.isDisjunct(tabellMengde2));
 		
 	}
-
+	
 	@Test
 	void testSetIntersection() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(1);
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(12);
 		
-		MengdeADT<Integer> tabellMengde3 = new TabellMengde<Integer>();
 		tabellMengde3.addElement(12);
 		
 		assertTrue(tabellMengde.setIntersection(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
-
+	
 	@Test
 	void testUnion() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(1);
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(12);
 		
-		MengdeADT<Integer> tabellMengde3 = new TabellMengde<Integer>();
 		tabellMengde3.addElement(12);
 		tabellMengde3.addElement(13);
 		tabellMengde3.addElement(14);
@@ -122,17 +120,33 @@ class TabellMengdeTest<T> {
 		assertTrue(tabellMengde.findUnion(tabellMengde2).isEqual(tabellMengde3));
 		
 	}
-	/* Difference */
+	
+	@Test
+	void testFindDifference() {
+		
+		tabellMengde2.addElement(1);
+		tabellMengde2.addElement(2);
+		tabellMengde2.addElement(12);
+		
+		tabellMengde3.addElement(13);
+		tabellMengde3.addElement(14);
+		
+		assertTrue(tabellMengde.findDifference(tabellMengde2).isEqual(tabellMengde3));
+		
+	}
+	
 	@Test
 	void testAddElement() {
-		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		
 		for(int i = 0; i < 20; i++) {
 			
 			tabellMengde2.addElement(i);
 			
 		}
+		
+		tabellMengde2.addElement(1);
+		
+		assertEquals(tabellMengde2.getAntall(), 20);
 		
 		for(int i = 0; i < 20; i++) {
 			
@@ -145,7 +159,6 @@ class TabellMengdeTest<T> {
 	@Test
 	void testRemoveElement() {
 		
-		MengdeADT<Integer> tabellMengde2 = new TabellMengde<Integer>();
 		tabellMengde2.addElement(13);
 		tabellMengde2.addElement(14);
 		

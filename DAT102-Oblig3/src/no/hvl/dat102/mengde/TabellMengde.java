@@ -4,22 +4,6 @@ import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	
-	/*
-	 * Implementert:
-	 * isEmpty
-	 * contains
-	 * isSubset
-	 * isDisjunct
-	 * addElement
-	 * removeElement
-	 * isEqual
-	 * findUnion
-	 * intersection
-	 * 
-	 * Ikkje implementert:
-	 * findDifference
-	 */
-	
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
@@ -66,16 +50,26 @@ public class TabellMengde<T> implements MengdeADT<T> {
         return true;
         
     }
-    // Ikkje implementert
+    
     @Override
     public boolean isEqual(MengdeADT<T> otherSet) {
-        for(int i = 0; i < antall; i++) {
+    	
+    	for(int i = 0; i < antall; i++) {
 
-            if(!otherSet.contains(this.set[i])) return false;
+            if(!otherSet.contains(set[i])) return false;
 
         }
+    	
+    	T[] temp = otherSet.toArray();
+    	
+    	for(int i = 0; i < otherSet.getAntall(); i++) {
+    		
+            if(!contains(temp[i])) return false;
 
-        return true;
+        }
+    	
+    	return true;
+    	
     }
     
     @Override
@@ -88,7 +82,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     	}
     	
     	return true;
-
+    	
     }
     
     @Override
@@ -174,7 +168,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public T[] toArray() {
-        T[] kopi = (T[]) new Object[INITIAL_CAPACITY];
+        @SuppressWarnings("unchecked")
+		T[] kopi = (T[]) new Object[INITIAL_CAPACITY];
 
         for (int i = 0; i < this.antall; i++) {
             kopi[i] = this.set[i];
