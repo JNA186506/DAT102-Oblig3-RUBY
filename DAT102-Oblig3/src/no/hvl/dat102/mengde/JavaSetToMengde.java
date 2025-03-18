@@ -138,9 +138,8 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	@Override
 	public T removeElement(T anElement) {
 		
-		if(set.contains(anElement)) {
+		if(set.remove(anElement)) {
 			
-			set.remove(anElement);
 			antall = set.size();
 			
 			return anElement;
