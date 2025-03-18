@@ -1,4 +1,4 @@
-package no.hvl.dat102.oppgave4.f;
+package no.hvl.dat102.mengde.f;
 
 import java.util.ArrayList;
 
