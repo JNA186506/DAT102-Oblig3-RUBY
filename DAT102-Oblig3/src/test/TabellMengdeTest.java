@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import no.hvl.dat102.mengde
-		.JavaSetToMengde;
+import no.hvl.dat102.mengde.JavaSetToMengde;
 import no.hvl.dat102.mengde.MengdeADT;
 import no.hvl.dat102.mengde.TabellMengde;
 
