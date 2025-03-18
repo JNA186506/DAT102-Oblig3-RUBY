@@ -49,7 +49,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 		
 		for(T t : this.set) {
 			
-			if(!set.contains(t)) return false;;
+			if(!set.contains(t)) return false;
 			
 		}
 		
@@ -60,19 +60,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	@Override
 	public boolean isEqual(MengdeADT<T> set) {
 		
-		for(T t : set.toArray()) {
-			
-			if(!this.set.contains(t)) return false;
-			
-		}
-		
-		for(T t : toArray()) {
-			
-			if(!set.contains(t)) return false;
-			
-		}
-		
-		return true;
+		return (isSubset(set) && set.isSubset(this));
 		
 	}
 	

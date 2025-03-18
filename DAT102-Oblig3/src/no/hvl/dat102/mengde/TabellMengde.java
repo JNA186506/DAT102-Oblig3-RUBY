@@ -54,21 +54,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
     @Override
     public boolean isEqual(MengdeADT<T> otherSet) {
     	
-    	for(int i = 0; i < antall; i++) {
-
-            if(!otherSet.contains(set[i])) return false;
-
-        }
-    	
-    	T[] temp = otherSet.toArray();
-    	
-    	for(int i = 0; i < otherSet.getAntall(); i++) {
-    		
-            if(!contains(temp[i])) return false;
-
-        }
-    	
-    	return true;
+    	return (isSubset(otherSet) && otherSet.isSubset(this));
     	
     }
     
