@@ -2,8 +2,13 @@ package no.hvl.dat102.mengde;
 
 public class Node<T> {
 
-    private T data;
-    private Node<T> next;
+    public T data;
+    public Node<T> next;
+
+    public Node(T data) {
+        this.data = data;
+        this.next = null;
+    }
 
     public T getData() {
         return data;
@@ -14,11 +19,11 @@ public class Node<T> {
     }
 
     public Node<T> getNode() {
-        return node;
+        return next;
     }
 
-    public void setNode(Node<T> node) {
-        this.node = node;
+    public void setNode(Node<T> next) {
+        this.next = next;
     }
 
     @Override
