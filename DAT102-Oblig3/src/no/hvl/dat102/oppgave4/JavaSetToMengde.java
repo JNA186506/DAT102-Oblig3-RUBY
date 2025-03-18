@@ -115,13 +115,6 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> findDifference(MengdeADT<T> set) {
 		
 		MengdeADT<T> temp = new JavaSetToMengde<T>();
-		T[] tList = set.toArray();
-		
-		for(T t : tList) {
-			
-			if(!this.set.contains(t)) temp.addElement(t);
-			
-		}
 		
 		for(T t : this.set) {
 			

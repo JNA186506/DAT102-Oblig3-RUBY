@@ -55,9 +55,9 @@ class TabellMengdeTest<T> {
 		tabellMengde.addElement(4);
 	
 		assertFalse(tabellMengde.isSubset(tabellMengde2));
-
+	
 	}
-
+	
 	@Test
 	void testIsEqual() {
 		
@@ -70,8 +70,12 @@ class TabellMengdeTest<T> {
 		
 		assertTrue(tabellMengde.isEqual(tabellMengde2));
 		
+		tabellMengde2.addElement(15);
+		
+		assertFalse(tabellMengde.isEqual(tabellMengde2));
+		
 	}
-
+	
 	@Test
 	void testIsDisjunct() {
 		
@@ -124,8 +128,6 @@ class TabellMengdeTest<T> {
 		tabellMengde2.addElement(2);
 		tabellMengde2.addElement(12);
 		
-		tabellMengde3.addElement(1);
-		tabellMengde3.addElement(2);
 		tabellMengde3.addElement(13);
 		tabellMengde3.addElement(14);
 		
