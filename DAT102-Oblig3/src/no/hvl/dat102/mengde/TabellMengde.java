@@ -1,4 +1,4 @@
-package no.hvl.dat102.oppgave4;
+package no.hvl.dat102.mengde;
 
 import java.util.Arrays;
 

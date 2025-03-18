@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import no.hvl.dat102.oppgave4.MengdeADT;
-import no.hvl.dat102.oppgave4.TabellMengde;
+import no.hvl.dat102.mengde.MengdeADT;
+import no.hvl.dat102.mengde.TabellMengde;
 
 class TabellMengdeTest<T> {
 	
