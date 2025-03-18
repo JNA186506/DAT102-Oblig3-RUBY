@@ -83,12 +83,11 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
         while (n != null) {
             if (n.equals(anElement)) {
-
+                node = n.next;
+                return anElement;
             }
-
             n = n.next;
         }
-
         return null;
     }
 
