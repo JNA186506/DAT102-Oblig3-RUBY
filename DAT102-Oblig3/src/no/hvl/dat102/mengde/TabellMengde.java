@@ -3,23 +3,7 @@ package no.hvl.dat102.mengde;
 import java.util.Arrays;
 
 public class TabellMengde<T> implements MengdeADT<T> {
-	
-	/*
-	 * Implementert:
-	 * isEmpty
-	 * contains
-	 * isSubset
-	 * isDisjunct
-	 * addElement
-	 * removeElement
-	 * isEqual
-	 * findUnion
-	 * intersection
-	 * 
-	 * Ikkje implementert:
-	 * findDifference
-	 */
-	
+
     private static final int INITIAL_CAPACITY = 10;
 
     private T[] set;
