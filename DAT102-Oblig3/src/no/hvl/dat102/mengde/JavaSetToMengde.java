@@ -8,7 +8,6 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	private static final int INITIAL_CAPACITY = 10;
 	
 	private Set<T> set;
-	private int antall;
 	
 	public JavaSetToMengde() {
 		
@@ -19,14 +18,13 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	public JavaSetToMengde(int capacity) {
 		
 		set = new HashSet<T>(capacity);
-		antall = 0;
 		
 	}
 	
 	@Override
 	public int getAntall() {
 		
-		return antall;
+		return set.size();
 		
 	}
 	
@@ -131,7 +129,6 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	public void addElement(T newElement) {
 		
 		set.add(newElement);
-		antall = set.size();
 		
 	}
 	
@@ -139,8 +136,6 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 	public T removeElement(T anElement) {
 		
 		if(set.remove(anElement)) {
-			
-			antall--;
 			
 			return anElement;
 			
