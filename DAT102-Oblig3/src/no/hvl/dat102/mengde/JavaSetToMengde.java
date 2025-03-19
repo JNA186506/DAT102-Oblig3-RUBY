@@ -140,7 +140,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 		
 		if(set.remove(anElement)) {
 			
-			antall = set.size();
+			antall--;
 			
 			return anElement;
 			
